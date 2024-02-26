@@ -71,23 +71,17 @@ export const ResponsiveLineChart = ({
           stroke={colors?.stroke}
           strokeWidth={3}
           fill={colors?.fill}
-          dot={{
-            stroke: colors?.stroke,
-            strokeWidth: 3,
-          }}
+          dot={false}
         />
 
         <Line
           type="monotone"
           dataKey="previousValue"
-          data={data}
-          stroke={colors.stroke}
+          stroke="lightblue"
+          strokeDasharray="5 5"
           strokeWidth={3}
-          fill={colors.fill}
-          dot={{
-            stroke: colors.stroke,
-            strokeWidth: 3,
-          }}
+          fill="rgba(173, 216, 230, 0.2)"
+          dot={false}
         />
       </LineChart>
     </ResponsiveContainer>

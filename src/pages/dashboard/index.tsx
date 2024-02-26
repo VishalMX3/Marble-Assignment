@@ -87,7 +87,7 @@ export const Dashboard: React.FC = () => {
           kpi="Total Orders"
           data={mergedTotalOrdersData}
           colors={{
-            stroke: "rgb(76, 175, 80)",
+            stroke: "rgb(7, 152, 241)",
             fill: "rgba(54, 162, 235, 0.2)",
           }}
         />
