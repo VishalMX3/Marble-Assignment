@@ -8,6 +8,8 @@ export const ChartTooltip = ({
   kpi,
 }: any) => {
   if (active && payload && payload.length) {
+    console.log(payload);
+    console.log(label);
     const dataPoint = payload[0].payload;
 
     const tooltipStyle = {
@@ -31,7 +33,7 @@ export const ChartTooltip = ({
             left: "-10px",
           }}
         />
-        <p className="flex text-xs font-semibold">{label}</p>
+        {/* <p className="flex text-xs font-semibold">{label}</p> */}
         <p className="text-xs">
           <span
             className="mr-1"
@@ -44,7 +46,9 @@ export const ChartTooltip = ({
           >
             &nbsp;&nbsp;&nbsp;&nbsp;
           </span>
-          {`${kpi}: ${dataPoint.value}`}
+          {`${dataPoint.date}: ${dataPoint.currentValue}`}
+          <br />
+          {`${dataPoint.date}: ${dataPoint.previousValue}`}
         </p>
       </div>
     );
