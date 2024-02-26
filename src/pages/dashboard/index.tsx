@@ -1,18 +1,91 @@
-import React from "react";
+import React, { useMemo } from "react";
+import { CrudFilter, useList } from "@refinedev/core";
+import dayjs from "dayjs";
+import { ResponsiveAreaChart } from "../../components/dashboard/ResponsiveAreaChart";
+import { TabView } from "../../components/dashboard/TabView";
+import { IChartDatum, TTab } from "../../interfaces";
+
+const filters: CrudFilter[] = [
+  {
+    field: "start",
+    operator: "eq",
+    value: dayjs()?.subtract(7, "days")?.startOf("day"),
+  },
+  {
+    field: "end",
+    operator: "eq",
+    value: dayjs().startOf("day"),
+  },
+];
 
 export const Dashboard: React.FC = () => {
+  const { data: dailyRevenue } = useList<IChartDatum>({
+    resource: "dailyRevenue",
+    filters,
+  });
+
+  const { data: dailyOrders } = useList<IChartDatum>({
+    resource: "dailyOrders",
+    filters,
+  });
+
+  const { data: newCustomers } = useList<IChartDatum>({
+    resource: "newCustomers",
+    filters,
+  });
+
+  const useMemoizedChartData = (d: any) => {
+    return useMemo(() => {
+      return d?.data?.data?.map((item: IChartDatum) => ({
+        date: new Intl.DateTimeFormat("en-US", {
+          month: "short",
+          year: "numeric",
+          day: "numeric",
+        }).format(new Date(item.date)),
+        value: item?.value,
+      }));
+    }, [d]);
+  };
+
+  const memoizedRevenueData = useMemoizedChartData(dailyRevenue);
+  const memoizedOrdersData = useMemoizedChartData(dailyOrders);
+  const memoizedNewCustomersData = useMemoizedChartData(newCustomers);
+
+  const tabs: TTab[] = [
+    {
+      id: 1,
+      label: "Daily Revenue",
+      content: (
+        <ResponsiveAreaChart
+          kpi="Daily revenue"
+          data={memoizedRevenueData}
+          colors={{
+            stroke: "rgb(54, 162, 235)",
+            fill: "rgba(54, 162, 235, 0.2)",
+          }}
+        />
+      ),
+    },
+
+    {
+      id: 2,
+      label: "New Customers",
+      content: (
+        <ResponsiveAreaChart
+          kpi="New customers"
+          data={memoizedNewCustomersData}
+          colors={{
+            stroke: "rgb(76, 175, 80)",
+            fill: "rgba(54, 162, 235, 0.2)",
+          }}
+        />
+      ),
+    },
+  ];
+
   return (
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content text-center">
-        <div className="max-w-md">
-          <h1 className="text-5xl font-bold">Hello there...</h1>
-          <p className="py-6">
-            You're here. A deva just as dashing and daisyuing - as yourself
-            refined
-          </p>
-          <button className="btn btn-primary">Buckle Up</button>
-        </div>
-      </div>
-    </div>
+    <>
+      <TabView tabs={tabs} />
+    </>
   );
 };
