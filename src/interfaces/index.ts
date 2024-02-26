@@ -30,6 +30,12 @@ export interface IOrder {
     date: string;
     value: string;
   }
+
+  export interface IChartDatum2 {
+    date: string;
+    currentValue: string;
+    previousValue: string;
+  }
   
   export interface IChart {
     data: IChartDatum[];

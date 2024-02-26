@@ -1,35 +1,35 @@
 import React from "react";
 import {
   ResponsiveContainer,
-  AreaChart,
+  LineChart,
   CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
-  Area,
+  Line,
 } from "recharts";
-import { ChartTooltip } from "../../components/dashboard/ChartTooltip";
-import { IChartDatum } from "../../interfaces";
+import { ChartTooltip } from "./ChartTooltip";
+import { IChartDatum, IChartDatum2 } from "../../interfaces";
 
-type TResponsiveAreaChartProps = {
+type TResponsiveLineChartProps = {
   kpi: string;
-  data: IChartDatum[];
+  data: IChartDatum2[];
   colors: {
     stroke: string;
     fill: string;
   };
 };
 
-export const ResponsiveAreaChart = ({
+export const ResponsiveLineChart = ({
   kpi,
   data,
   colors,
-}: TResponsiveAreaChartProps) => {
+}: TResponsiveLineChartProps) => {
   return (
     <ResponsiveContainer height={400}>
-      <AreaChart
-        data={data}
+      <LineChart
         height={400}
+        data={data}
         margin={{
           top: 10,
           right: 30,
@@ -37,7 +37,7 @@ export const ResponsiveAreaChart = ({
           bottom: 0,
         }}
       >
-        <CartesianGrid strokeDasharray="0 0 0" />
+        <CartesianGrid strokeDasharray="0 0" />
         <XAxis
           dataKey="date"
           tickCount={data?.length ?? 0}
@@ -65,9 +65,9 @@ export const ResponsiveAreaChart = ({
             borderRadius: "10px",
           }}
         />
-        <Area
+        <Line
           type="monotone"
-          dataKey="value"
+          dataKey="currentValue"
           stroke={colors?.stroke}
           strokeWidth={3}
           fill={colors?.fill}
@@ -76,7 +76,20 @@ export const ResponsiveAreaChart = ({
             strokeWidth: 3,
           }}
         />
-      </AreaChart>
+
+        <Line
+          type="monotone"
+          dataKey="previousValue"
+          data={data}
+          stroke={colors.stroke}
+          strokeWidth={3}
+          fill={colors.fill}
+          dot={{
+            stroke: colors.stroke,
+            strokeWidth: 3,
+          }}
+        />
+      </LineChart>
     </ResponsiveContainer>
   );
 };
