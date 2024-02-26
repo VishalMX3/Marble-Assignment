@@ -24,11 +24,6 @@ export const Dashboard: React.FC = () => {
     filters,
   });
 
-  const { data: dailyOrders } = useList<IChartDatum>({
-    resource: "dailyOrders",
-    filters,
-  });
-
   const { data: newCustomers } = useList<IChartDatum>({
     resource: "newCustomers",
     filters,
