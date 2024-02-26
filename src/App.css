@@ -1,36 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0px;
 }
 
-table {
-  border-spacing: 0;
-  border: 1px solid black;
-}
-
-table th,
-td {
-  margin: 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-}
-
-table tr:last-child td {
-  border-bottom: 0;
-}
-
-table th,
-td {
-  margin: 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-}
-
-table th:last-child,
-td:last-child {
-  border-right: 0;
-}
+/* TailwindCSS layers towards the top */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .layout {
   display: flex;
@@ -85,4 +66,16 @@ td:last-child {
 
 .menu ul {
   padding-left: 16px;
+}
+
+.page-container {
+  @apply mx-auto my-2 py-2 px-4 bg-slate-50 border rounded drop-shadow-md;
+}
+
+.page-title {
+  @apply text-xl font-bold;
+}
+
+.page-header {
+  @apply py-4 flex justify-between items-center mb-6;
 }
