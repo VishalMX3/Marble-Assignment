@@ -41,7 +41,6 @@ export const Dashboard: React.FC = () => {
         date: new Intl.DateTimeFormat("en-US", {
           month: "short",
           year: "numeric",
-          day: "numeric",
         }).format(new Date(item.date)),
         value: item?.value,
       }));
@@ -76,7 +75,7 @@ export const Dashboard: React.FC = () => {
     memoizedDummyTotalOrdersDataPrev
   );
 
-  // console.log(mergedTotalOrdersData);
+  console.log(mergedTotalOrdersData);
 
   const tabs: TTab[] = [
     {

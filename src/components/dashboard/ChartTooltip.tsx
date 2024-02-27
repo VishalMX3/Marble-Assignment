@@ -11,6 +11,17 @@ export const ChartTooltip = ({
   if (active && payload && payload.length) {
     const dataPoint = payload[0].payload;
 
+    // Parse the date string to create a Date object
+    const date = new Date(dataPoint.date);
+
+    // Subtract one year from the date
+    date.setFullYear(date.getFullYear() - 1);
+
+    // Format the date to display only the month and year
+    const previousYearDate = `${date.toLocaleString("default", {
+      month: "short",
+    })} ${date.getFullYear()}`;
+
     const tooltipStyle = {
       left: coordinate.x, // Adjust positioning
       top: coordinate.y, // Adjust positioning
@@ -33,7 +44,7 @@ export const ChartTooltip = ({
           >
             &nbsp;&nbsp;
           </span>
-          {`${dataPoint.date}: ${dataPoint.currentValue}`}
+          {`${dataPoint.date}  ${dataPoint.currentValue}`}
         </p>
 
         <p className="text-xs flex items-center justify-evenly">
@@ -70,7 +81,7 @@ export const ChartTooltip = ({
           >
             &nbsp;&nbsp;
           </span>
-          {`${dataPoint.date}: ${dataPoint.previousValue}`}
+          {`${previousYearDate}  ${dataPoint.previousValue}`}
         </p>
       </div>
     );
