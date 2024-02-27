@@ -4,7 +4,18 @@ import dayjs from "dayjs";
 import { ResponsiveLineChart } from "../../components/dashboard/ResponsiveLineChart";
 import { TabView } from "../../components/dashboard/TabView";
 import { IChartDatum, TTab } from "../../interfaces";
+import Stats from "../../components/dashboard/Stats";
+
 import { dummyTotalOrders, dummyTotalOrdersPrev } from "../../data";
+import { generateMockData } from "../../mockData";
+
+const mockData = generateMockData(
+  1,
+  50,
+  new Date("2023-01-01"),
+  new Date("2023-12-31")
+);
+console.log(JSON.stringify(mockData, null, 2));
 
 const filters: CrudFilter[] = [
   {
@@ -17,23 +28,18 @@ const filters: CrudFilter[] = [
     operator: "eq",
     value: dayjs().endOf("month"),
   },
-  //   {
-  //     field: "step",
-  //     operator: "eq",
-  //     value: 2, // Step by two months
-  //   },
 ];
 
 export const Dashboard: React.FC = () => {
-  //   const { data: dailyRevenue } = useList<IChartDatum>({
-  //     resource: "dailyRevenue",
-  //     filters,
-  //   });
+  const { data: dailyRevenue } = useList<IChartDatum>({
+    resource: "dailyRevenue",
+    filters,
+  });
 
-  //   const { data: newCustomers } = useList<IChartDatum>({
-  //     resource: "newCustomers",
-  //     filters,
-  //   });
+  const { data: newCustomers } = useList<IChartDatum>({
+    resource: "newCustomers",
+    filters,
+  });
 
   const useMemoizedChartData = (d: any) => {
     return useMemo(() => {
@@ -92,10 +98,25 @@ export const Dashboard: React.FC = () => {
         />
       ),
     },
+    {
+      id: 2,
+      label: "Conversion Rate",
+      content: (
+        <ResponsiveLineChart
+          kpi="Conversion Rate"
+          data={mergedTotalOrdersData}
+          colors={{
+            stroke: "rgb(7, 152, 241)",
+            fill: "rgba(54, 162, 235, 0.2)",
+          }}
+        />
+      ),
+    },
   ];
 
   return (
     <>
+      <Stats dailyRevenue={dailyRevenue} newCustomers={newCustomers} />
       <TabView tabs={tabs} />
     </>
   );
