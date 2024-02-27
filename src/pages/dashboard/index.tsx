@@ -5,17 +5,20 @@ import { ResponsiveLineChart } from "../../components/dashboard/ResponsiveLineCh
 import { TabView } from "../../components/dashboard/TabView";
 import { IChartDatum, TTab } from "../../interfaces";
 import Stats from "../../components/dashboard/Stats";
-
-import { dummyTotalOrders, dummyTotalOrdersPrev } from "../../data";
 import { generateMockData } from "../../mockData";
 
-const mockData = generateMockData(
+const conversionRateMockData = generateMockData(
   1,
   50,
   new Date("2023-01-01"),
-  new Date("2023-12-31")
+  new Date("2023-01-15")
 );
-console.log(JSON.stringify(mockData, null, 2));
+const conversionRateMockDataPrev = generateMockData(
+  3,
+  80,
+  new Date("2022-01-01"),
+  new Date("2022-01-15")
+);
 
 const filters: CrudFilter[] = [
   {
@@ -43,27 +46,23 @@ export const Dashboard: React.FC = () => {
 
   const useMemoizedChartData = (d: any) => {
     return useMemo(() => {
-      return d?.data?.data?.map((item: IChartDatum) => ({
+      return d?.data?.map((item: IChartDatum) => ({
         date: new Intl.DateTimeFormat("en-US", {
           month: "short",
           year: "numeric",
+          day: "numeric",
         }).format(new Date(item.date)),
         value: item?.value,
       }));
     }, [d]);
   };
 
-  const memoizedDummyTotalOrdersData = useMemoizedChartData(dummyTotalOrders);
-
-  const memoizedDummyTotalOrdersDataPrev =
-    useMemoizedChartData(dummyTotalOrdersPrev);
-
   // Function to merge total orders data for current year and previous year
   const mergeTotalOrdersData = (
     currentYearData: any,
     previousYearData: any
   ) => {
-    // Assuming both arrays are sorted by date
+    // Assuming both arrays are sorted by date and start and end from same date
     const mergedData = [];
     for (let i = 0; i < currentYearData.length; i++) {
       mergedData.push({
@@ -75,36 +74,27 @@ export const Dashboard: React.FC = () => {
     return mergedData;
   };
 
-  // Merge current year's and previous year's total orders data
-  const mergedTotalOrdersData = mergeTotalOrdersData(
-    memoizedDummyTotalOrdersData,
-    memoizedDummyTotalOrdersDataPrev
+  const memoizedConversionRateMockData = useMemoizedChartData(
+    conversionRateMockData
+  );
+  const memoizedConversionRateMockDataPrev = useMemoizedChartData(
+    conversionRateMockDataPrev
   );
 
-  console.log(mergedTotalOrdersData);
+  // Merge current year's and previous year's total data
+  const mergedConversionRateMockData = mergeTotalOrdersData(
+    memoizedConversionRateMockData,
+    memoizedConversionRateMockDataPrev
+  );
 
   const tabs: TTab[] = [
     {
       id: 1,
-      label: "Total Orders",
-      content: (
-        <ResponsiveLineChart
-          kpi="Total Orders"
-          data={mergedTotalOrdersData}
-          colors={{
-            stroke: "rgb(7, 152, 241)",
-            fill: "rgba(54, 162, 235, 0.2)",
-          }}
-        />
-      ),
-    },
-    {
-      id: 2,
       label: "Conversion Rate",
       content: (
         <ResponsiveLineChart
           kpi="Conversion Rate"
-          data={mergedTotalOrdersData}
+          data={mergedConversionRateMockData}
           colors={{
             stroke: "rgb(7, 152, 241)",
             fill: "rgba(54, 162, 235, 0.2)",

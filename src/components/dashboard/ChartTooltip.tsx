@@ -18,9 +18,10 @@ export const ChartTooltip = ({
     date.setFullYear(date.getFullYear() - 1);
 
     // Format the date to display only the month and year
-    const previousYearDate = `${date.toLocaleString("default", {
+    const previousYearDate = `${date.toLocaleString("en-US", {
       month: "short",
-    })} ${date.getFullYear()}`;
+      day: "numeric",
+    })}, ${date.getFullYear()}`;
 
     const calc = Math.round(
       (dataPoint.currentValue / dataPoint.previousValue) * 100
