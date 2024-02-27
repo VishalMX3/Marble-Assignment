@@ -60,11 +60,11 @@ export const ResponsiveLineChart = ({
         <Tooltip
           content={<ChartTooltip kpi={kpi} colors={colors} />}
           wrapperStyle={{
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-            border: "0 solid #000",
+            backgroundColor: "rgba(255, 255, 255, 0.9)",
             borderRadius: "10px",
           }}
         />
+
         <Line
           type="monotone"
           dataKey="currentValue"

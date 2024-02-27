@@ -1,4 +1,5 @@
 import React from "react";
+
 export const ChartTooltip = ({
   active,
   payload,
@@ -8,8 +9,6 @@ export const ChartTooltip = ({
   kpi,
 }: any) => {
   if (active && payload && payload.length) {
-    console.log(payload);
-    console.log(label);
     const dataPoint = payload[0].payload;
 
     const tooltipStyle = {
@@ -19,35 +18,36 @@ export const ChartTooltip = ({
 
     return (
       <div
-        className="p-1 flex flex-col justify-center items-start border border-black rounded-lg text-zinc-50"
+        className="p-5 flex flex-col items-start gap-5 bg-white shadow-md rounded-lg"
         style={tooltipStyle}
       >
-        <div
-          style={{
-            position: "absolute",
-            width: "0",
-            height: "0",
-            borderTop: "10px solid transparent",
-            borderBottom: "10px solid transparent",
-            borderRight: "10px solid rgba(0, 0, 0, 0.7)",
-            left: "-10px",
-          }}
-        />
-        {/* <p className="flex text-xs font-semibold">{label}</p> */}
         <p className="text-xs">
           <span
-            className="mr-1"
+            className="mr-1 "
             style={{
-              width: "0.5px",
-              height: "0.5px",
+              width: "0.1px",
+              height: "0.1px",
               border: `1px solid ${colors?.stroke}`,
               backgroundColor: colors?.fill,
             }}
           >
-            &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;
           </span>
           {`${dataPoint.date}: ${dataPoint.currentValue}`}
-          <br />
+        </p>
+
+        <p className="text-xs">
+          <span
+            className="mr-1"
+            style={{
+              width: "0.1px",
+              height: "0.1px",
+              border: `1px solid ${colors?.stroke}`,
+              backgroundColor: colors?.fill,
+            }}
+          >
+            &nbsp;&nbsp;
+          </span>
           {`${dataPoint.date}: ${dataPoint.previousValue}`}
         </p>
       </div>

@@ -76,7 +76,7 @@ export const Dashboard: React.FC = () => {
     memoizedDummyTotalOrdersDataPrev
   );
 
-  console.log(mergedTotalOrdersData);
+  // console.log(mergedTotalOrdersData);
 
   const tabs: TTab[] = [
     {
