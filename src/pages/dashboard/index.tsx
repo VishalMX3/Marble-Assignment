@@ -74,17 +74,10 @@ export const Dashboard: React.FC = () => {
     return mergedData;
   };
 
-  const memoizedConversionRateMockData = useMemoizedChartData(
-    conversionRateMockData
-  );
-  const memoizedConversionRateMockDataPrev = useMemoizedChartData(
-    conversionRateMockDataPrev
-  );
-
   // Merge current year's and previous year's total data
   const mergedConversionRateMockData = mergeTotalOrdersData(
-    memoizedConversionRateMockData,
-    memoizedConversionRateMockDataPrev
+    useMemoizedChartData(conversionRateMockData),
+    useMemoizedChartData(conversionRateMockDataPrev)
   );
 
   const tabs: TTab[] = [
