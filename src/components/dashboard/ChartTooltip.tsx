@@ -22,6 +22,16 @@ export const ChartTooltip = ({
       month: "short",
     })} ${date.getFullYear()}`;
 
+    const calc = Math.round(
+      (dataPoint.currentValue / dataPoint.previousValue) * 100
+    );
+    const percent =
+      dataPoint.currentValue > dataPoint.previousValue
+        ? `+ ${calc - 100}%`
+        : `- ${100 - calc}%`;
+    const textColor =
+      dataPoint.currentValue > dataPoint.previousValue ? "seagreen" : "crimson";
+
     const tooltipStyle = {
       left: coordinate.x, // Adjust positioning
       top: coordinate.y, // Adjust positioning
@@ -45,6 +55,9 @@ export const ChartTooltip = ({
             &nbsp;&nbsp;
           </span>
           {`${dataPoint.date}  ${dataPoint.currentValue}`}
+          <span className="mx-1 text-l font-bold" style={{ color: textColor }}>
+            {percent}
+          </span>
         </p>
 
         <p className="text-xs flex items-center justify-evenly">
