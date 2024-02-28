@@ -13,6 +13,16 @@ export const TabItem = ({ label, isActive, clickHandler }: TTabItem) => {
         isActive ? " tab-active" : ""
       }`}
       onClick={clickHandler}
+      style={{
+        transition: "background-color 0.1s ease-in-out",
+        backgroundColor: isActive ? "#D9D9D9" : "",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = "#D9D9D9";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = isActive ? "#D9D9D9" : "";
+      }}
     >
       {label}
     </a>
