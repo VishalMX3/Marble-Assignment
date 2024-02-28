@@ -1,12 +1,41 @@
 import React from "react";
+import { IChartDatum2 } from "../../interfaces";
 
 type TTabItem = {
   label: string;
   isActive: Boolean;
+  data: IChartDatum2[];
   clickHandler: () => void;
 };
 
-export const TabItem = ({ label, isActive, clickHandler }: TTabItem) => {
+export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
+  const calculateSum = (data: any[]) => {
+    let sum = 0;
+    for (let i = 0; i < data.length; i++) {
+      sum = sum + data[i].currentValue;
+    }
+    return sum;
+  };
+  const calculateSumPrev = (data: any[]) => {
+    let sum = 0;
+    for (let i = 0; i < data.length; i++) {
+      sum = sum + data[i].previousValue;
+    }
+    return sum;
+  };
+
+  const currentValueSum = calculateSum(data);
+  const previousValueSum = calculateSumPrev(data);
+
+  const calc = Math.round(
+    ((currentValueSum - previousValueSum) / previousValueSum) * 100
+  );
+
+  const percentDifference =
+    currentValueSum > previousValueSum ? `+ ${calc}%` : ` ${calc}%`;
+
+  const textColor = currentValueSum > previousValueSum ? "seagreen" : "crimson";
+
   return (
     <a
       className={`text-l font-bold tab tab-bordered${
@@ -25,6 +54,8 @@ export const TabItem = ({ label, isActive, clickHandler }: TTabItem) => {
       }}
     >
       {label}
+      <div>{currentValueSum}</div>
+      <div>{percentDifference}</div>
     </a>
   );
 };

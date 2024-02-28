@@ -63,5 +63,6 @@ export interface IOrder {
   export type TTab = {
     id: number;
     label: string;
+    data: IChartDatum2[];
     content: JSX.Element;
   };

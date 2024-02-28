@@ -92,6 +92,7 @@ export const Dashboard: React.FC = () => {
     {
       id: 1,
       label: "Conversion Rate",
+      data: mergedConversionRateMockData,
       content: (
         <ResponsiveLineChart
           kpi="Conversion Rate"
@@ -106,6 +107,7 @@ export const Dashboard: React.FC = () => {
     {
       id: 2,
       label: "Total Orders",
+      data: mergedTotalOrdersMockData,
       content: (
         <ResponsiveLineChart
           kpi="Total Orders"
@@ -120,6 +122,7 @@ export const Dashboard: React.FC = () => {
     {
       id: 3,
       label: "Online Store Sessions",
+      data: mergedOnlineStoreSessionsMockData,
       content: (
         <ResponsiveLineChart
           kpi="Online Store Sessions"
@@ -134,6 +137,7 @@ export const Dashboard: React.FC = () => {
     {
       id: 4,
       label: "Gross Sales",
+      data: mergedGrossSalesMockData,
       content: (
         <ResponsiveLineChart
           kpi="Gross Sales"
