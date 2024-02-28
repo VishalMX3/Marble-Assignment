@@ -153,7 +153,7 @@ export const Dashboard: React.FC = () => {
 
   return (
     <>
-      <Stats dailyRevenue={dailyRevenue} newCustomers={newCustomers} />
+      {/* <Stats dailyRevenue={dailyRevenue} newCustomers={newCustomers} /> */}
       <TabView tabs={tabs} />
     </>
   );
