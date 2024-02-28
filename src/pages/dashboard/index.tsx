@@ -5,20 +5,7 @@ import { ResponsiveLineChart } from "../../components/dashboard/ResponsiveLineCh
 import { TabView } from "../../components/dashboard/TabView";
 import { IChartDatum, TTab } from "../../interfaces";
 import Stats from "../../components/dashboard/Stats";
-import { generateMockData } from "../../mockData";
-
-const conversionRateMockData = generateMockData(
-  1,
-  50,
-  new Date("2023-01-01"),
-  new Date("2023-01-15")
-);
-const conversionRateMockDataPrev = generateMockData(
-  3,
-  80,
-  new Date("2022-01-01"),
-  new Date("2022-01-15")
-);
+import { conversionRateMockData, conversionRateMockDataPrev } from "../../data";
 
 const filters: CrudFilter[] = [
   {
