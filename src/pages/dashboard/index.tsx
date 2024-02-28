@@ -5,7 +5,16 @@ import { ResponsiveLineChart } from "../../components/dashboard/ResponsiveLineCh
 import { TabView } from "../../components/dashboard/TabView";
 import { IChartDatum, TTab } from "../../interfaces";
 import Stats from "../../components/dashboard/Stats";
-import { conversionRateMockData, conversionRateMockDataPrev } from "../../data";
+import {
+  conversionRateMockData,
+  conversionRateMockDataPrev,
+  totalOrdersMockData,
+  totalOrdersMockDataPrev,
+  onlineStoreSessionsMockData,
+  onlineStoreSessionsMockDataPrev,
+  grossSalesMockData,
+  grossSalesMockDataPrev,
+} from "../../data";
 
 const filters: CrudFilter[] = [
   {
@@ -66,6 +75,18 @@ export const Dashboard: React.FC = () => {
     useMemoizedChartData(conversionRateMockData),
     useMemoizedChartData(conversionRateMockDataPrev)
   );
+  const mergedTotalOrdersMockData = mergeTotalOrdersData(
+    useMemoizedChartData(totalOrdersMockData),
+    useMemoizedChartData(totalOrdersMockDataPrev)
+  );
+  const mergedOnlineStoreSessionsMockData = mergeTotalOrdersData(
+    useMemoizedChartData(onlineStoreSessionsMockData),
+    useMemoizedChartData(onlineStoreSessionsMockDataPrev)
+  );
+  const mergedGrossSalesMockData = mergeTotalOrdersData(
+    useMemoizedChartData(grossSalesMockData),
+    useMemoizedChartData(grossSalesMockDataPrev)
+  );
 
   const tabs: TTab[] = [
     {
@@ -78,6 +99,48 @@ export const Dashboard: React.FC = () => {
           colors={{
             stroke: "rgb(7, 152, 241)",
             fill: "rgba(54, 162, 235, 0.2)",
+          }}
+        />
+      ),
+    },
+    {
+      id: 2,
+      label: "Total Orders",
+      content: (
+        <ResponsiveLineChart
+          kpi="Total Orders"
+          data={mergedTotalOrdersMockData}
+          colors={{
+            stroke: "rgb(0, 207, 28)",
+            fill: "rgba(7, 163, 85, 0.2)",
+          }}
+        />
+      ),
+    },
+    {
+      id: 3,
+      label: "Online Store Sessions",
+      content: (
+        <ResponsiveLineChart
+          kpi="Online Store Sessions"
+          data={mergedOnlineStoreSessionsMockData}
+          colors={{
+            stroke: "rgb(210, 217, 0)",
+            fill: "rgba(102, 150, 0, 0.2)",
+          }}
+        />
+      ),
+    },
+    {
+      id: 4,
+      label: "Gross Sales",
+      content: (
+        <ResponsiveLineChart
+          kpi="Gross Sales"
+          data={mergedGrossSalesMockData}
+          colors={{
+            stroke: "rgb(217, 0, 0)",
+            fill: "rgba(150, 27, 0, 0.2)",
           }}
         />
       ),
