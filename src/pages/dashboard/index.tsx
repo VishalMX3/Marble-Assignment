@@ -154,7 +154,9 @@ export const Dashboard: React.FC = () => {
   return (
     <>
       {/* <Stats dailyRevenue={dailyRevenue} newCustomers={newCustomers} /> */}
-      <TabView tabs={tabs} />
+      <div className="bg-zinc-950	p-10">
+        <TabView tabs={tabs} />
+      </div>
     </>
   );
 };

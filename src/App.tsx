@@ -15,13 +15,13 @@ import {
   Routes,
 } from "react-router-dom";
 import "./App.css";
-import { Layout } from "./components/layout";
+// import { Layout } from "./components/layout";
 import { Dashboard } from "./pages/dashboard";
 
 function App() {
   return (
     <BrowserRouter>
-      <GitHubBanner />
+      {/* <GitHubBanner /> */}
       <RefineKbarProvider>
         <Refine
           dataProvider={dataProvider("https://api.finefoods.refine.dev")}
@@ -38,19 +38,11 @@ function App() {
           }}
         >
           <Routes>
-            <Route
-              element={
-                <Layout>
-                  <Outlet />
-                </Layout>
-              }
-            >
-              <Route index element={<Navigate to="/dashboard" />} />
-              <Route path="/dashboard">
-                <Route index element={<Dashboard />} />
-              </Route>
-              <Route path="*" element={<ErrorComponent />} />
+            <Route index element={<Navigate to="/dashboard" />} />
+            <Route path="/dashboard">
+              <Route index element={<Dashboard />} />
             </Route>
+            <Route path="*" element={<ErrorComponent />} />
           </Routes>
 
           <RefineKbar />
