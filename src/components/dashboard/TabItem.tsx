@@ -30,7 +30,7 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
 
   return (
     <a
-      className={`stat my-2 py-4 flex-1   rounded${
+      className={`stat my-2 py-4 flex-1 rounded-xl${
         isActive ? " tab-active" : ""
       }`}
       onClick={clickHandler}
@@ -49,12 +49,7 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
 
       <div className="stat-desc my-2 flex items-center">
         <div className="text-xl font-bold mr-2">{currentValueSum}</div>
-        <span
-          className="mx-1 text-l text-slate-500	"
-          style={{ color: textColor }}
-        >
-          {percentDifference}
-        </span>
+        <span className="mx-1 text-l text-slate-500">{percentDifference}</span>
       </div>
     </a>
   );
