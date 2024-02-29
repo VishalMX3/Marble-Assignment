@@ -9,7 +9,7 @@ type TTabViewProps = {
 
 export const TabView = ({ tabs }: TTabViewProps) => {
   const [activeTab, setActiveTab] = useState(0);
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
 
   const toggleTab = (index: number) => {
     setCollapsed((prevState) => !prevState);
@@ -66,13 +66,16 @@ export const TabView = ({ tabs }: TTabViewProps) => {
           </div>
         ))}
       </div>
-      <div className="ease-in mx-auto">
-        {!collapsed &&
-          tabs?.map((tab: TTab, index: number) => (
-            <TabPanel key={tab?.id} isActive={index === activeTab}>
-              {tab?.content}
-            </TabPanel>
-          ))}
+      <div
+        className={`mx-auto transition-all duration-300 ${
+          collapsed ? "hidden" : ""
+        }`}
+      >
+        {tabs?.map((tab: TTab, index: number) => (
+          <TabPanel key={tab?.id} isActive={index === activeTab}>
+            {tab?.content}
+          </TabPanel>
+        ))}
       </div>
     </div>
   );
