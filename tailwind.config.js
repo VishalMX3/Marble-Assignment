@@ -12,7 +12,11 @@ export default {
     ],
   },
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        md: "0px 1px 2px 0px rgba(0, 0, 0, 0.25)",
+      },
+    },
   },
   plugins: [require("daisyui")],
 };

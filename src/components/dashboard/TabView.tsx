@@ -16,7 +16,7 @@ export const TabView = ({ tabs }: TTabViewProps) => {
   };
 
   return (
-    <div className="bg-stone-50 rounded-xl p-4">
+    <div className="bg-white w-[793px] h-[282px] rounded-xl p-2.5 gap-2.5 shadow-md">
       <div className="w-full mx-auto mb-4 flex flex-col justify-center items-stretch md:flex-row md:justify-between drop-shadow-md">
         {tabs?.map((tab: TTab, index: number) => (
           <div key={tab?.id} className="p-1 w-full mx-auto md:flex-1 md:mr-2">
