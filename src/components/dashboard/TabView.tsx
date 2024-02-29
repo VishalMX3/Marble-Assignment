@@ -16,8 +16,8 @@ export const TabView = ({ tabs }: TTabViewProps) => {
   };
 
   return (
-    <div className="bg-white w-[793px] h-[282px] rounded-xl p-2.5 gap-2.5 shadow-md">
-      <div className="w-full mx-auto mb-4 flex flex-col justify-center items-stretch md:flex-row md:justify-between drop-shadow-md">
+    <div className="flex flex-col items-start bg-white absolute w-[793px] h-[282px] rounded-xl p-2.5 gap-2.5 shadow-md">
+      <div className="flex items-center p-0 gap-1 w-[773px] h-[60px] bg-amber-300">
         {tabs?.map((tab: TTab, index: number) => (
           <div key={tab?.id} className="p-1 w-full mx-auto md:flex-1 md:mr-2">
             <div className="flex items-center">
@@ -67,7 +67,7 @@ export const TabView = ({ tabs }: TTabViewProps) => {
         ))}
       </div>
       <div
-        className={`mx-auto transition-all duration-300 ${
+        className={`w-[773px] h-[150px] bg-lime-300  ${
           collapsed ? "hidden" : ""
         }`}
       >
@@ -76,6 +76,9 @@ export const TabView = ({ tabs }: TTabViewProps) => {
             {tab?.content}
           </TabPanel>
         ))}
+      </div>
+      <div className="w-[773px] h-[32px] bg-emerald-300 footer">
+        Date Picker
       </div>
     </div>
   );
