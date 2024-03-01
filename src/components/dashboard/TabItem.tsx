@@ -11,8 +11,24 @@ type TTabItem = {
   clickHandler: () => void;
 };
 
+const DropdownContent = () => {
+  // This is a mock content, you can replace it with your actual dropdown content
+  return (
+    <div className="z-10 mt-[145px] ml-[141px] flex flex-col items-start absolute p-[5px] gap-[5px] w-[212px] h-[167px] bg-[#FFFFFF] rounded-[10px] shadow-md">
+      <p>Option 1</p>
+      <p>Option 2</p>
+      <p>Option 3</p>
+      <p>Option 4</p>
+      <p>Option 5</p>
+      <p>Option 6</p>
+    </div>
+  );
+};
+
 export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
   const [isHover, setIsHover] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   const calculateSum = (data: any[]) => {
     return data.reduce((sum, item) => sum + item.currentValue, 0);
   };
@@ -31,6 +47,10 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
   const percentDifference =
     currentValueSum > previousValueSum ? `${calc}%` : `${calc}%`;
 
+  const handlePenClick = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   return (
     <div
       style={{
@@ -38,7 +58,7 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
       }}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      className=" hover:bg-[#F1F1F1] flex flex-col items-start py-[5px] px-[10px] gap-[25px] w-[183px] h-[60px] rounded-lg"
+      className=" hover:bg-[#F1F1F1] flex flex-col items-start py-[5px] px-[10px] gap-[25px] w-[183px] h-[60px] rounded-lg relative"
     >
       <a
         className={` w-[163px] h-[50px] flex flex-col items-center p-0 gap-[5px] 
@@ -54,7 +74,10 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
               <span className="w-[123px] h-[0px] border-dashed border-[1px] border-[#CCCCC]"></span>
             </div>
           </div>
-          <span className="hover:bg-[#c9cac7] ease-in flex flex-col justify-center items-center p-[5px] gap-2.5 m-auto w-[23px] h-[23px] rounded">
+          <span
+            className="hover:bg-[#c9cac7] ease-in flex flex-col justify-center items-center p-[5px] gap-2.5 m-auto w-[23px] h-[23px] rounded cursor-pointer"
+            onClick={handlePenClick}
+          >
             <img
               src={pen}
               alt="pen"
@@ -65,8 +88,8 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
           </span>
         </div>
 
-        <div className="flex items-center p-0 w-[163px] h-[22px] gap-[5px]">
-          <div className="h-[22px] text-[#303030] font-semibold text-[15px]">
+        <div className="flex items-center p-0 w-[163px] h-[22px] gap-[5px] relative">
+          <div className="h-[22px] text-[#303030] font-semibold text-[15px] overflow-visible">
             {currentValueSum}
           </div>
           <div className="w-[24px] h-[15px] gap-[2px] flex items-center p-0">
@@ -78,6 +101,7 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
               {percentDifference}
             </span>
           </div>
+          {isDropdownOpen && <DropdownContent />}
         </div>
       </a>
     </div>
