@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { IChartDatum2 } from "../../interfaces";
 import pen from "../../../images/pen.svg";
 
@@ -10,6 +10,7 @@ type TTabItem = {
 };
 
 export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
+  const [isHover, setIsHover] = useState(false);
   const calculateSum = (data: any[]) => {
     return data.reduce((sum, item) => sum + item.currentValue, 0);
   };
@@ -34,12 +35,13 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
       style={{
         backgroundColor: isActive ? "#F1F1F1" : "",
       }}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
       className=" hover:bg-[#F1F1F1] flex flex-col items-start py-[5px] px-[10px] gap-[25px] w-[183px] h-[60px] rounded-lg"
     >
       <a
-        className={` w-[163px] h-[50px] flex flex-col items-center p-0 gap-[5px] ${
-          isActive ? " tab-active" : ""
-        }`}
+        className={` w-[163px] h-[50px] flex flex-col items-center p-0 gap-[5px] 
+        ${isActive ? " tab-active" : ""}`}
         onClick={clickHandler}
       >
         <div className="flex justify-between items-center gap-[25px] w-[163px] h-[23px]">
@@ -55,7 +57,9 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
             <img
               src={pen}
               alt="pen"
-              className=" text-xs w-[13px] h-[13px] text"
+              className={`${
+                isActive || isHover ? "" : "hidden"
+              } text-xs w-[13px] h-[13px] text`}
             ></img>
           </span>
         </div>
