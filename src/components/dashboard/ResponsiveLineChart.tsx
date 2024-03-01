@@ -72,7 +72,7 @@ export const ResponsiveLineChart = ({
         <Tooltip
           content={<ChartTooltip kpi={kpi} colors={colors} />}
           wrapperStyle={{
-            backgroundColor: "rgba(255, 255, 255, 0.9)",
+            backgroundColor: "#FFFFFF",
             borderRadius: "10px",
           }}
         />

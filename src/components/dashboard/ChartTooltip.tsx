@@ -1,4 +1,6 @@
 import React from "react";
+import Trend2 from "../../../images/Trend2.svg";
+import InvertedTrend2 from "../../../images/InvertedTrend2.svg";
 
 export const ChartTooltip = ({
   active,
@@ -28,8 +30,8 @@ export const ChartTooltip = ({
     );
     const percent =
       dataPoint.currentValue > dataPoint.previousValue
-        ? `+ ${calc - 100}%`
-        : `- ${100 - calc}%`;
+        ? `${calc - 100}%`
+        : `${100 - calc}%`;
     const textColor =
       dataPoint.currentValue > dataPoint.previousValue ? "seagreen" : "crimson";
 
@@ -40,14 +42,14 @@ export const ChartTooltip = ({
 
     return (
       <div
-        className="p-5 flex flex-col items-start gap-5 bg-white shadow-md rounded-lg"
+        className="p-[5px] w-[180px] h-[62px] left-[17px] top-[23px] flex flex-col items-start gap-[5px] shadow-md rounded-[10px]"
         style={tooltipStyle}
       >
-        <p className="text-xs flex items-center justify-evenly">
+        <p className="upper flex items-center py-[5px] px-[10px] w-[170px] h-[25px] justify-evenly">
           <span
-            className="mr-1 inline-block"
+            className=""
             style={{
-              width: "20px",
+              width: "10px",
               height: "1px",
               border: `2px solid ${colors?.stroke}`,
               backgroundColor: colors?.fill,
@@ -55,17 +57,33 @@ export const ChartTooltip = ({
           >
             &nbsp;&nbsp;
           </span>
-          {`${dataPoint.date}  ${dataPoint.currentValue}`}
-          <span className="mx-1 text-l font-bold" style={{ color: textColor }}>
-            {percent}
+          <div className="w-13 h-3 font-normal text-[10px] text-[rgba(48, 48, 48, 1)]">
+            {dataPoint.date}
+          </div>
+          <div className="w-[33px] h-3 font-medium text-[10px] text-[rgba(48, 48, 48, 1)]">
+            {dataPoint.currentValue}
+          </div>
+
+          <span className="flex items-center gap-[2px] w-[29px] h-[15px]">
+            <img
+              src={
+                dataPoint.currentValue > dataPoint.previousValue
+                  ? Trend2
+                  : InvertedTrend2
+              }
+              className="w-[12px] h-[10px] font-black text-[10px] flex items-center text-center text-[rgba(97, 97, 97, 1)]"
+            ></img>
+            <span className="text-[rgba(97, 97, 97, 1)] w-[15px] h-[15px] font-normal text-[10px]">
+              {percent}
+            </span>
           </span>
         </p>
 
-        <p className="text-xs flex items-center justify-evenly">
+        <p className="lower flex items-center py-[5px] px-[10px] w-[170px] h-[25px] justify-evenly">
           <span
-            className="mr-1 inline-block"
+            className=""
             style={{
-              width: "3.9px",
+              width: "10px",
               height: "1px",
               border: "2px solid lightblue",
               backgroundColor: "rgba(173, 216, 230, 0.2)",
@@ -73,29 +91,15 @@ export const ChartTooltip = ({
           >
             &nbsp;&nbsp;
           </span>
-          <span
-            className="mr-1 inline-block"
-            style={{
-              width: "3.9px",
-              height: "1px",
-              border: "2px solid lightblue",
-              backgroundColor: "rgba(173, 216, 230, 0.2)",
-            }}
-          >
-            &nbsp;&nbsp;
-          </span>
-          <span
-            className="mr-1 inline-block"
-            style={{
-              width: "3.9px",
-              height: "1px",
-              border: "2px solid lightblue",
-              backgroundColor: "rgba(173, 216, 230, 0.2)",
-            }}
-          >
-            &nbsp;&nbsp;
-          </span>
-          {`${previousYearDate}  ${dataPoint.previousValue}`}
+
+          <div className="w-13 h-3 font-normal text-[10px] text-[rgba(48, 48, 48, 1)]">
+            {previousYearDate}
+          </div>
+          <div className="w-[33px] h-3 font-medium text-[10px] text-[rgba(48, 48, 48, 1)]">
+            {dataPoint.previousValue}
+          </div>
+
+          <span className="flex items-center gap-[2px] w-[29px] h-[15px]"></span>
         </p>
       </div>
     );
