@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { IChartDatum2 } from "../../interfaces";
 import pen from "../../../images/pen.svg";
+import Trend from "../../../images/Trend.svg";
+import InvertedTrend from "../../../images/InvertedTrend.svg";
 
 type TTabItem = {
   label: string;
@@ -26,7 +28,6 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
     (Math.abs(currentValueSum - previousValueSum) / previousValueSum) * 100
   );
 
-  const sign = currentValueSum > previousValueSum ? "+" : "-";
   const percentDifference =
     currentValueSum > previousValueSum ? `${calc}%` : `${calc}%`;
 
@@ -69,9 +70,10 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
             {currentValueSum}
           </div>
           <div className="w-[24px] h-[15px] gap-[2px] flex items-center p-0">
-            <span className="w-[7px] h-[10px] font-black text-[10px] flex items-center text-center text-[#616161]">
-              {sign}
-            </span>
+            <img
+              src={currentValueSum > previousValueSum ? Trend : InvertedTrend}
+              className="w-[7px] h-[10px] font-black text-[10px] flex items-center text-center text-[#616161]"
+            ></img>
             <span className="text-slate-500 w-[15px] h-[15px] font-normal text-[10px]">
               {percentDifference}
             </span>
