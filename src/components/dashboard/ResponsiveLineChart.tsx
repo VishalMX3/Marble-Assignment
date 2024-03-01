@@ -42,14 +42,19 @@ export const ResponsiveLineChart = ({
           dataKey="date"
           tickCount={data?.length ?? 0}
           tick={{
-            stroke: "light-grey",
+            stroke: "rgba(103, 103, 103, 1)",
             strokeWidth: 0.01,
             fontSize: "12px",
+          }}
+          tickLine={{
+            stroke: "rgba(245, 245, 245, 1)",
+            strokeWidth: 0.1,
+            opacity: 0.5,
           }}
           style={{ stroke: "#dad8d8" }}
         />
         <YAxis
-          tickCount={3}
+          // tickCount={4}
           tick={{
             stroke: "rgba(112, 112, 122, 1)",
             strokeWidth: 0.01,
@@ -58,10 +63,11 @@ export const ResponsiveLineChart = ({
           domain={[0, "dataMax + 10"]}
           tickLine={{
             stroke: "rgba(245, 245, 245, 1)",
-            strokeWidth: "1px",
+            strokeWidth: 1,
             opacity: 0.5,
           }}
           axisLine={{ stroke: "white" }}
+          interval={1}
         />
         <Tooltip
           content={<ChartTooltip kpi={kpi} colors={colors} />}
