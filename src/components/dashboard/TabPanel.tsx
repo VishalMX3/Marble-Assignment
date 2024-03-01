@@ -6,5 +6,7 @@ type TTabPanelProps = {
 };
 
 export const TabPanel = ({ isActive, children }: TTabPanelProps) => {
-  return isActive ? <div className="mx-auto py-6">{children}</div> : null;
+  return isActive ? (
+    <div className=" w-[773px] h-[150px]">{children}</div>
+  ) : null;
 };

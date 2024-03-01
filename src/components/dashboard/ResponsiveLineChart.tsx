@@ -26,36 +26,42 @@ export const ResponsiveLineChart = ({
   colors,
 }: TResponsiveLineChartProps) => {
   return (
-    <ResponsiveContainer height={400}>
+    <ResponsiveContainer height={150}>
       <LineChart
-        height={400}
+        height={150}
         data={data}
         margin={{
-          top: 10,
-          right: 30,
-          left: 0,
+          top: 0,
+          right: 25,
+          left: -25,
           bottom: 0,
         }}
       >
-        <CartesianGrid strokeDasharray="0 0" />
+        <CartesianGrid vertical={false} strokeDasharray="0 0" />
         <XAxis
           dataKey="date"
           tickCount={data?.length ?? 0}
           tick={{
             stroke: "light-grey",
-            strokeWidth: 0.5,
+            strokeWidth: 0.01,
             fontSize: "12px",
           }}
+          style={{ stroke: "#dad8d8" }}
         />
         <YAxis
-          tickCount={13}
+          tickCount={3}
           tick={{
-            stroke: "light-grey",
-            strokeWidth: 0.5,
+            stroke: "rgba(112, 112, 122, 1)",
+            strokeWidth: 0.01,
             fontSize: "12px",
           }}
-          interval="preserveStartEnd"
           domain={[0, "dataMax + 10"]}
+          tickLine={{
+            stroke: "rgba(245, 245, 245, 1)",
+            strokeWidth: "1px",
+            opacity: 0.5,
+          }}
+          axisLine={{ stroke: "white" }}
         />
         <Tooltip
           content={<ChartTooltip kpi={kpi} colors={colors} />}

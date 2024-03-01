@@ -63,11 +63,7 @@ export const TabView = ({ tabs }: TTabViewProps) => {
         </div>
       </div>
 
-      <div
-        className={`w-[773px] h-[150px] bg-lime-300  ${
-          collapsed ? "hidden" : ""
-        }`}
-      >
+      <div className={`w-[773px] h-[150px]   ${collapsed ? "hidden" : ""}`}>
         {tabs?.map((tab: TTab, index: number) => (
           <TabPanel key={tab?.id} isActive={index === activeTab}>
             {tab?.content}
