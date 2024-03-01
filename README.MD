@@ -1,4 +1,4 @@
-# Marble-Assignment
+# Marble-Assignment-Documentation
 
 <div align="center" style="margin: 30px;">
     <a href="https://refine.dev">
@@ -9,7 +9,7 @@
 
 This [Refine](https://github.com/refinedev/refine) project was generated with [create refine-app](https://github.com/refinedev/refine/tree/master/packages/create-refine-app).
 
-## Getting Started
+## My Approach
 
 A React Framework for building internal tools, admin panels, dashboards & B2B apps with unmatched flexibility ✨
 
