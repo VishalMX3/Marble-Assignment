@@ -113,8 +113,8 @@ export const Dashboard: React.FC = () => {
           kpi="Total Orders"
           data={mergedTotalOrdersMockData}
           colors={{
-            stroke: "rgb(0, 207, 28)",
-            fill: "rgba(7, 163, 85, 0.2)",
+            stroke: "rgb(7, 152, 241)",
+            fill: "rgba(54, 162, 235, 0.2)",
           }}
         />
       ),
@@ -128,8 +128,8 @@ export const Dashboard: React.FC = () => {
           kpi="Online Store Sessions"
           data={mergedOnlineStoreSessionsMockData}
           colors={{
-            stroke: "rgb(210, 217, 0)",
-            fill: "rgba(102, 150, 0, 0.2)",
+            stroke: "rgb(7, 152, 241)",
+            fill: "rgba(54, 162, 235, 0.2)",
           }}
         />
       ),
@@ -143,8 +143,8 @@ export const Dashboard: React.FC = () => {
           kpi="Gross Sales"
           data={mergedGrossSalesMockData}
           colors={{
-            stroke: "rgb(217, 0, 0)",
-            fill: "rgba(150, 27, 0, 0.2)",
+            stroke: "rgb(7, 152, 241)",
+            fill: "rgba(54, 162, 235, 0.2)",
           }}
         />
       ),

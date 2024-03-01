@@ -71,8 +71,39 @@ export const TabView = ({ tabs }: TTabViewProps) => {
         ))}
       </div>
 
-      <div className="w-[773px] h-[32px] bg-emerald-300 footer">
-        Date Picker
+      <div className="w-[773px] h-[32px] flex justify-end py-[5px] px-[0px] gap-2.5">
+        <div className=" w-[375px] h-[22px]"></div>
+        <div className="rounded-sm w-[189px] h-[22px] bg-[#F6F6F7] flex items-center py-[5px] px-[10px] gap-2.5 justify-center">
+          <span
+            className=""
+            style={{
+              width: "10px",
+              height: "1px",
+              border: "1px solid rgb(7, 152, 241)",
+            }}
+          >
+            &nbsp;&nbsp;
+          </span>
+          <div className="w-[149px] h-[12px] font-normal text-[10px] flex items-center text-[#70707A]">
+            Oct 1,2022 - Feb 21, 2024
+          </div>
+        </div>
+        <div className="rounded-sm w-[189px] h-[22px] bg-[#F6F6F7] flex items-center py-[5px] px-[10px] gap-2.5">
+          <span
+            className=""
+            style={{
+              width: "10px",
+              height: "1px",
+              border: "1px solid rgba(173, 216, 230, 0.2)",
+              backgroundColor: "rgba(54, 162, 235, 0.2)",
+            }}
+          >
+            &nbsp;&nbsp;
+          </span>
+          <div className="w-[149px] h-[12px] font-normal text-[10px] flex items-center text-[#70707A]">
+            Oct 1,2021 - Feb 21, 2023
+          </div>
+        </div>
       </div>
     </div>
   );
