@@ -3,26 +3,12 @@ import { IChartDatum2 } from "../../interfaces";
 import pen from "../../../images/pen.svg";
 import Trend from "../../../images/Trend.svg";
 import InvertedTrend from "../../../images/InvertedTrend.svg";
-
+import Dropdown from "./Dropdown";
 type TTabItem = {
   label: string;
   isActive: boolean;
   data: IChartDatum2[];
   clickHandler: () => void;
-};
-
-const DropdownContent = () => {
-  // This is a mock content, you can replace it with your actual dropdown content
-  return (
-    <div className="z-10 mt-[145px] ml-[141px] flex flex-col items-start absolute p-[5px] gap-[5px] w-[212px] h-[167px] bg-[#FFFFFF] rounded-[10px] shadow-md">
-      <p>Option 1</p>
-      <p>Option 2</p>
-      <p>Option 3</p>
-      <p>Option 4</p>
-      <p>Option 5</p>
-      <p>Option 6</p>
-    </div>
-  );
 };
 
 export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
@@ -101,7 +87,7 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
               {percentDifference}
             </span>
           </div>
-          {isDropdownOpen && <DropdownContent />}
+          {isDropdownOpen && <Dropdown />}
         </div>
       </a>
     </div>

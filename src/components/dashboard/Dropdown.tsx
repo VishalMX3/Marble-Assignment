@@ -1,36 +1,70 @@
-import React, { useState } from "react";
+import React from "react";
 
-interface DropdownProps {
-  options: string[];
-}
+import Trend3 from "../../../images/Trend3.svg";
 
-const Dropdown: React.FC<DropdownProps> = ({ options }) => {
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
-    setIsOpen(false);
-  };
-
+const Dropdown: React.FC<any> = () => {
   return (
-    <div className="dropdown">
-      <button className="dropdown-toggle" onClick={toggleDropdown}>
-        {selectedOption || "Select an option"}
-      </button>
-      {isOpen && (
-        <ul className="dropdown-menu">
-          {options.map((option, index) => (
-            <li key={index} onClick={() => handleOptionClick(option)}>
-              {option}
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="ease-in z-10 mt-[145px] ml-[141px] flex flex-col items-start absolute p-[5px] gap-[5px] w-[212px] h-[167px] bg-[#FFFFFF] rounded-[10px] shadow-md">
+      <div className="flex items-center py-[5px] px-[10px] gap-2.5 w-[202px] h-[22px] rounded-sm hover:bg-[#F1F1F1] cursor-pointer">
+        <img
+          className="w-[10px] h-[10px] font-black text-[10px] text-[#616161] flex items-center"
+          src={Trend3}
+          alt="trend3"
+        ></img>
+        <p className="w-[150px] h-[12px] font-normal text-[10px] flex items-center text-[#303030]">
+          Average Order Value
+        </p>
+      </div>
+      <div className="flex items-center py-[5px] px-[10px] gap-2.5 w-[202px] h-[22px] rounded-sm hover:bg-[#F1F1F1] cursor-pointer">
+        <img
+          className="w-[10px] h-[10px] font-black text-[10px] text-[#616161] flex items-center"
+          src={Trend3}
+          alt="trend3"
+        ></img>
+        <p className="w-[150px] h-[12px] font-normal text-[10px] flex items-center text-[#303030]">
+          Conversion Rate
+        </p>
+      </div>
+      <div className="flex items-center py-[5px] px-[10px] gap-2.5 w-[202px] h-[22px] rounded-sm hover:bg-[#F1F1F1] cursor-pointer">
+        <img
+          className="w-[10px] h-[10px] font-black text-[10px] text-[#616161] flex items-center"
+          src={Trend3}
+          alt="trend3"
+        ></img>
+        <p className="w-[150px] h-[12px] font-normal text-[10px] flex items-center text-[#303030]">
+          Gross Sales
+        </p>
+      </div>
+      <div className="flex items-center py-[5px] px-[10px] gap-2.5 w-[202px] h-[22px] rounded-sm hover:bg-[#F1F1F1] cursor-pointer">
+        <img
+          className="w-[10px] h-[10px] font-black text-[10px] text-[#616161] flex items-center"
+          src={Trend3}
+          alt="trend3"
+        ></img>
+        <p className="w-[150px] h-[12px] font-normal text-[10px] flex items-center text-[#303030]">
+          Net return value
+        </p>
+      </div>
+      <div className="flex items-center py-[5px] px-[10px] gap-2.5 w-[202px] h-[22px] rounded-sm hover:bg-[#F1F1F1] cursor-pointer">
+        <img
+          className="w-[10px] h-[10px] font-black text-[10px] text-[#616161] flex items-center"
+          src={Trend3}
+          alt="trend3"
+        ></img>
+        <p className="w-[150px] h-[12px] font-normal text-[10px] flex items-center text-[#303030]">
+          Store search conversion
+        </p>
+      </div>
+      <div className="flex items-center py-[5px] px-[10px] gap-2.5 w-[202px] h-[22px] rounded-sm hover:bg-[#F1F1F1] cursor-pointer">
+        <img
+          className="w-[10px] h-[10px] font-black text-[10px] text-[#616161] flex items-center"
+          src={Trend3}
+          alt="trend3"
+        ></img>
+        <p className="w-[150px] h-[12px] font-normal text-[10px] flex items-center text-[#303030]">
+          Return rate
+        </p>
+      </div>
     </div>
   );
 };
