@@ -4,6 +4,7 @@ import pen from "../../../images/pen.svg";
 import Trend from "../../../images/Trend.svg";
 import InvertedTrend from "../../../images/InvertedTrend.svg";
 import Dropdown from "./Dropdown";
+import { OverlayInfo } from "./OverlayInfo";
 type TTabItem = {
   label: string;
   isActive: boolean;
@@ -14,6 +15,7 @@ type TTabItem = {
 export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
   const [isHover, setIsHover] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const calculateSum = (data: any[]) => {
     return data.reduce((sum, item) => sum + item.currentValue, 0);
@@ -53,8 +55,14 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
       >
         <div className="flex justify-between items-center gap-[25px] w-[163px] h-[23px]">
           <div className="m-auto w-[123px] relative h-[17px]">
-            <div className="flex flex-col items-start p-0 gap-[0px] absolute h-[16px] left-0 top-0">
-              <p className="h-[15px] font-medium text-xs text-[#303030]">
+            <div
+              className={`flex flex-col items-start p-0 gap-[0px] absolute h-[16px] left-0 top-0`}
+            >
+              <p
+                onMouseEnter={() => setShowOverlay(true)}
+                onMouseLeave={() => setShowOverlay(false)}
+                className="h-[15px] font-medium text-xs text-[#303030]"
+              >
                 {label}
               </p>
               <span className="w-[123px] h-[0px] border-dashed border-[1px] border-[#CCCCC]"></span>
@@ -87,6 +95,7 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
               {percentDifference}
             </span>
           </div>
+          {showOverlay && <OverlayInfo info={label} />}
           {isDropdownOpen && <Dropdown />}
         </div>
       </a>
