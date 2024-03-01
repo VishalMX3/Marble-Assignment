@@ -108,7 +108,7 @@ const mockDataPrev = generateMockData(
 
 **Later, the hard coded dates could be replaced by user chosen dates, to write the logic for date picker object.**
 
-## Logic I used for previous year comparision line
+## Logic I used for previous year comparison line ->
 
 Let's take an example of **Total Orders**. I created mock data using the above implementation. Both for the selected time period and same time period 1 year back.
 
