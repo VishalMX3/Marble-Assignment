@@ -86,7 +86,7 @@ export function generateMockData(
 }
 ```
 
-I used the above function to generate mock data for a fixed (hard-coded) time-period and also to get previous year data (Assuming 1 year gap comparision). We can now use the below code in other components to get the required data.
+I used the above function to generate mock data for a fixed (hard-coded) time-period and also to get previous year data (Assuming 1 year gap comparison). We can now use the below code in other components to get the required data.
 
 ```tsx
 import { generateMockData } from "../../mockData";
