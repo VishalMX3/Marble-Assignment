@@ -7,7 +7,9 @@
 </div>
 <br/>
 
-View the live demo [here](https://marble-assignment.onrender.com/) [Source Code](https://github.com/VishalMX3/Marble-Assignment/tree/main).
+View the [Live Demo](https://marble-assignment.onrender.com/)
+
+View the [Source Code](https://github.com/VishalMX3/Marble-Assignment/tree/main).
 
 ### Running the development server.
 
@@ -23,7 +25,7 @@ I built the React dashboard and admin panel with Refine and daisyUI along with t
 
 ## Assumptions made:
 
-I have assumed that there are API endpoints say (/`totalOrders`, /`onlineStoreSessions`, /`averageOrderValue` and /`grossSales`) in backend which can provide me with json data in the following form:
+I have assumed that there are API endpoints say (`/totalOrders`, `/onlineStoreSessions`, `/averageOrderValue` and `/grossSales`) in backend which can provide me with json data in the following format:
 
 ```tsx
 {
