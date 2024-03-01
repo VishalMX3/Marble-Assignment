@@ -19,18 +19,13 @@ export const TabView = ({ tabs }: TTabViewProps) => {
     <div className="flex flex-col items-start bg-white absolute w-[793px] h-[282px] rounded-xl p-2.5 gap-2.5 shadow-md">
       <div className="flex items-center p-0 gap-1 w-[773px] h-[60px] ">
         {tabs?.map((tab: TTab, index: number) => (
-          <div
+          <TabItem
             key={tab?.id}
-            className=" hover:bg-[#F1F1F1] flex flex-col items-start py-[5px] px-[10px] gap-[25px] w-[183px] h-[60px] rounded-lg"
-          >
-            <TabItem
-              key={tab?.id}
-              label={tab?.label}
-              data={tab?.data}
-              isActive={index === activeTab}
-              clickHandler={() => setActiveTab(index)}
-            />
-          </div>
+            label={tab?.label}
+            data={tab?.data}
+            isActive={index === activeTab}
+            clickHandler={() => setActiveTab(index)}
+          />
         ))}
         <div className="arrow h-[17px] w-[25px] gap-5 px-[5px] flex items-center justify-center">
           <button
