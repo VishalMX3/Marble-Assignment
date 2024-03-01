@@ -1,12 +1,12 @@
 import { generateMockData } from "../src/mockData";
 
-export const conversionRateMockData = generateMockData(
+export const averageOrderValueMockData = generateMockData(
   1,
   50,
   new Date("2023-01-01"),
   new Date("2023-01-15")
 );
-export const conversionRateMockDataPrev = generateMockData(
+export const averageOrderValueMockDataPrev = generateMockData(
   3,
   80,
   new Date("2022-01-01"),

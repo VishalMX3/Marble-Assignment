@@ -4,10 +4,9 @@ import dayjs from "dayjs";
 import { ResponsiveLineChart } from "../../components/dashboard/ResponsiveLineChart";
 import { TabView } from "../../components/dashboard/TabView";
 import { IChartDatum, TTab } from "../../interfaces";
-import Stats from "../../components/dashboard/Stats";
 import {
-  conversionRateMockData,
-  conversionRateMockDataPrev,
+  averageOrderValueMockData,
+  averageOrderValueMockDataPrev,
   totalOrdersMockData,
   totalOrdersMockDataPrev,
   onlineStoreSessionsMockData,
@@ -54,10 +53,7 @@ export const Dashboard: React.FC = () => {
   };
 
   // Function to merge total orders data for current year and previous year
-  const mergeTotalOrdersData = (
-    currentYearData: any,
-    previousYearData: any
-  ) => {
+  const mergeData = (currentYearData: any, previousYearData: any) => {
     // Assuming both arrays are sorted by date and start and end from same date
     const mergedData = [];
     for (let i = 0; i < currentYearData.length; i++) {
@@ -71,19 +67,19 @@ export const Dashboard: React.FC = () => {
   };
 
   // Merge current year's and previous year's total data
-  const mergedConversionRateMockData = mergeTotalOrdersData(
-    useMemoizedChartData(conversionRateMockData),
-    useMemoizedChartData(conversionRateMockDataPrev)
+  const mergedAverageOrderValueMockData = mergeData(
+    useMemoizedChartData(averageOrderValueMockData),
+    useMemoizedChartData(averageOrderValueMockDataPrev)
   );
-  const mergedTotalOrdersMockData = mergeTotalOrdersData(
+  const mergedTotalOrdersMockData = mergeData(
     useMemoizedChartData(totalOrdersMockData),
     useMemoizedChartData(totalOrdersMockDataPrev)
   );
-  const mergedOnlineStoreSessionsMockData = mergeTotalOrdersData(
+  const mergedOnlineStoreSessionsMockData = mergeData(
     useMemoizedChartData(onlineStoreSessionsMockData),
     useMemoizedChartData(onlineStoreSessionsMockDataPrev)
   );
-  const mergedGrossSalesMockData = mergeTotalOrdersData(
+  const mergedGrossSalesMockData = mergeData(
     useMemoizedChartData(grossSalesMockData),
     useMemoizedChartData(grossSalesMockDataPrev)
   );
@@ -92,7 +88,7 @@ export const Dashboard: React.FC = () => {
     {
       id: 1,
       label: "Online Store Sessions",
-      desc: "heuughuh",
+      desc: "Your online store’s traffic volume, shown in sessions.",
       data: mergedOnlineStoreSessionsMockData,
       content: (
         <ResponsiveLineChart
@@ -108,7 +104,7 @@ export const Dashboard: React.FC = () => {
     {
       id: 2,
       label: "Total Orders",
-      desc: "heuughuh",
+      desc: "Shows the total orders in the given time period.",
       data: mergedTotalOrdersMockData,
       content: (
         <ResponsiveLineChart
@@ -123,13 +119,13 @@ export const Dashboard: React.FC = () => {
     },
     {
       id: 3,
-      label: "Conversion Rate",
-      desc: "heuughuh",
-      data: mergedConversionRateMockData,
+      label: "Average Order Value",
+      desc: "Shows the average order value in the given time period.",
+      data: mergedAverageOrderValueMockData,
       content: (
         <ResponsiveLineChart
-          kpi="Conversion Rate"
-          data={mergedConversionRateMockData}
+          kpi="Average order value"
+          data={mergedAverageOrderValueMockData}
           colors={{
             stroke: "rgb(7, 152, 241)",
             fill: "rgba(54, 162, 235, 0.2)",
@@ -141,7 +137,7 @@ export const Dashboard: React.FC = () => {
     {
       id: 4,
       label: "Gross Sales",
-      desc: "heuughuh",
+      desc: "Shows the average gross sales in the given time period.",
       data: mergedGrossSalesMockData,
       content: (
         <ResponsiveLineChart
