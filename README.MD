@@ -1,8 +1,8 @@
-# pretty-teams-pay
+# Marble-Assignment
 
 <div align="center" style="margin: 30px;">
     <a href="https://refine.dev">
-    <img alt="refine logo" src="https://refine.ams3.cdn.digitaloceanspaces.com/readme/refine-readme-banner.png">
+    <img alt="refine logo" src="https://firebasestorage.googleapis.com/v0/b/e-shop-74124.appspot.com/o/dashboard.png?alt=media&token=e0aef0ae-38e0-4b0a-b040-09431c630a1d">
     </a>
 </div>
 <br/>
