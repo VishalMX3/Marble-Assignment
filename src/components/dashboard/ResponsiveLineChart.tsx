@@ -81,7 +81,7 @@ export const ResponsiveLineChart = ({
           type="monotone"
           dataKey="currentValue"
           stroke={colors?.stroke}
-          strokeWidth={3}
+          strokeWidth={2}
           fill={colors?.fill}
           dot={false}
         />
@@ -91,7 +91,7 @@ export const ResponsiveLineChart = ({
           dataKey="previousValue"
           stroke="lightblue"
           strokeDasharray="5 5"
-          strokeWidth={3}
+          strokeWidth={2}
           fill="rgba(173, 216, 230, 0.2)"
           dot={false}
         />
