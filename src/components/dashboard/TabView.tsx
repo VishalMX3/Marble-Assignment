@@ -23,6 +23,7 @@ export const TabView = ({ tabs }: TTabViewProps) => {
             key={tab?.id}
             label={tab?.label}
             data={tab?.data}
+            desc={tab?.desc}
             isActive={index === activeTab}
             clickHandler={() => setActiveTab(index)}
           />

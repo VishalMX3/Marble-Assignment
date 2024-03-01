@@ -91,12 +91,13 @@ export const Dashboard: React.FC = () => {
   const tabs: TTab[] = [
     {
       id: 1,
-      label: "Conversion Rate",
-      data: mergedConversionRateMockData,
+      label: "Online Store Sessions",
+      desc: "heuughuh",
+      data: mergedOnlineStoreSessionsMockData,
       content: (
         <ResponsiveLineChart
-          kpi="Conversion Rate"
-          data={mergedConversionRateMockData}
+          kpi="Online Store Sessions"
+          data={mergedOnlineStoreSessionsMockData}
           colors={{
             stroke: "rgb(7, 152, 241)",
             fill: "rgba(54, 162, 235, 0.2)",
@@ -107,6 +108,7 @@ export const Dashboard: React.FC = () => {
     {
       id: 2,
       label: "Total Orders",
+      desc: "heuughuh",
       data: mergedTotalOrdersMockData,
       content: (
         <ResponsiveLineChart
@@ -121,12 +123,13 @@ export const Dashboard: React.FC = () => {
     },
     {
       id: 3,
-      label: "Online Store Sessions",
-      data: mergedOnlineStoreSessionsMockData,
+      label: "Conversion Rate",
+      desc: "heuughuh",
+      data: mergedConversionRateMockData,
       content: (
         <ResponsiveLineChart
-          kpi="Online Store Sessions"
-          data={mergedOnlineStoreSessionsMockData}
+          kpi="Conversion Rate"
+          data={mergedConversionRateMockData}
           colors={{
             stroke: "rgb(7, 152, 241)",
             fill: "rgba(54, 162, 235, 0.2)",
@@ -134,9 +137,11 @@ export const Dashboard: React.FC = () => {
         />
       ),
     },
+
     {
       id: 4,
       label: "Gross Sales",
+      desc: "heuughuh",
       data: mergedGrossSalesMockData,
       content: (
         <ResponsiveLineChart

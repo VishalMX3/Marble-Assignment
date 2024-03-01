@@ -7,12 +7,19 @@ import Dropdown from "./Dropdown";
 import { OverlayInfo } from "./OverlayInfo";
 type TTabItem = {
   label: string;
+  desc: string;
   isActive: boolean;
   data: IChartDatum2[];
   clickHandler: () => void;
 };
 
-export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
+export const TabItem = ({
+  label,
+  isActive,
+  data,
+  desc,
+  clickHandler,
+}: TTabItem) => {
   const [isHover, setIsHover] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
@@ -95,7 +102,7 @@ export const TabItem = ({ label, isActive, data, clickHandler }: TTabItem) => {
               {percentDifference}
             </span>
           </div>
-          {showOverlay && <OverlayInfo info={label} />}
+          {showOverlay && <OverlayInfo info={label} desc={desc} />}
           {isDropdownOpen && <Dropdown />}
         </div>
       </a>
