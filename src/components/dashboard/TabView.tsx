@@ -16,7 +16,7 @@ export const TabView = ({ tabs }: TTabViewProps) => {
   };
 
   return (
-    <div className="flex flex-col items-start bg-white absolute w-[793px] h-[282px] rounded-xl p-2.5 gap-2.5 shadow-md">
+    <div className="flex flex-col items-start bg-white absolute w-[793px] rounded-xl p-2.5 gap-2.5 shadow-md mt-48">
       <div className="flex items-center p-0 gap-1 w-[773px] h-[60px] ">
         {tabs?.map((tab: TTab, index: number) => (
           <TabItem
@@ -72,7 +72,11 @@ export const TabView = ({ tabs }: TTabViewProps) => {
         ))}
       </div>
 
-      <div className="w-[773px] h-[32px] flex justify-end py-[5px] px-[0px] gap-2.5">
+      <div
+        className={`w-[773px] h-[32px] flex justify-end py-[5px] px-[0px] gap-2.5 ${
+          collapsed ? "hidden" : ""
+        }`}
+      >
         <div className=" w-[375px] h-[22px]"></div>
         <div className="rounded-sm w-[189px] h-[22px] bg-[#F6F6F7] flex items-center py-[5px] px-[10px] gap-2.5 justify-center">
           <span
