@@ -1,6 +1,4 @@
 import React, { useMemo } from "react";
-import { CrudFilter, useList } from "@refinedev/core";
-import dayjs from "dayjs";
 import { ResponsiveLineChart } from "../../components/dashboard/ResponsiveLineChart";
 import { TabView } from "../../components/dashboard/TabView";
 import { IChartDatum, TTab } from "../../interfaces";
@@ -15,30 +13,7 @@ import {
   grossSalesMockDataPrev,
 } from "../../data";
 
-const filters: CrudFilter[] = [
-  {
-    field: "start",
-    operator: "eq",
-    value: dayjs().subtract(1, "year").startOf("month"),
-  },
-  {
-    field: "end",
-    operator: "eq",
-    value: dayjs().endOf("month"),
-  },
-];
-
 export const Dashboard: React.FC = () => {
-  const { data: dailyRevenue } = useList<IChartDatum>({
-    resource: "dailyRevenue",
-    filters,
-  });
-
-  const { data: newCustomers } = useList<IChartDatum>({
-    resource: "newCustomers",
-    filters,
-  });
-
   const useMemoizedChartData = (d: any) => {
     return useMemo(() => {
       return d?.data?.map((item: IChartDatum) => ({
@@ -154,9 +129,7 @@ export const Dashboard: React.FC = () => {
 
   return (
     <>
-      {/* <Stats dailyRevenue={dailyRevenue} newCustomers={newCustomers} /> */}
       <div className="bg-slate-100 w-[100vw] h-[100vh] flex justify-center">
-        {/* <h1>Hey</h1> */}
         <TabView tabs={tabs} />
       </div>
     </>
