@@ -31,7 +31,7 @@ export const ResponsiveLineChart = ({
         height={150}
         data={data}
         margin={{
-          top: 0,
+          top: 5,
           right: 25,
           left: -25,
           bottom: 0,
