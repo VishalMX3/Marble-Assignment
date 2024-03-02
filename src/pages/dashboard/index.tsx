@@ -218,7 +218,16 @@ export const Dashboard: React.FC = () => {
     <>
       <div className="bg-slate-100 w-[100vw] h-[100vh] flex flex-col gap-6">
         <div className="flex flex-col mt-[180px] ml-[380px] gap-4">
-          <div className="ml-[300px]">
+          <div
+            className="ml-[300px] w-[220px] flex items-center justify-center"
+            style={{
+              fontFamily: "Arial, sans-serif",
+              backgroundColor: "#f0f0f0",
+              border: "2px solid #ccc",
+              borderRadius: "5px",
+              padding: "10px",
+            }}
+          >
             <DatePicker
               selected={startDate}
               onChange={handleDateChange}
