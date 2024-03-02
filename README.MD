@@ -167,7 +167,53 @@ The above process is repeated for rest of the metrics.
 
 For styling the chart, I used the [documentation](https://recharts.org/en-US/api/LineChart) from recharts.
 
+## Implementing Date Picker
+
+I added a date range picker at the top to allow users to select periods for comparison. For implementing this, I used `react-datepicker` library and used state variables like `startDate` and `endDate` which were passed to the generateMockData function.
+
+By getting the date range from the date picker in correct format, I could render charts data dynamically from the selected time period. The initial state of start and end date is set to a random date range in Nov, 2023.
+
+```tsx
+const [startDate, setStartDate] = useState<Date>(new Date("2023-11-04"));
+const [endDate, setEndDate] = useState<Date>(new Date("2023-11-21"));
+
+const handleDateChange = (dates: [Date, Date]) => {
+  const [start, end] = dates;
+  setStartDate(start);
+  setEndDate(end);
+};
+
+const averageOrderValueMockData = generateMockData(
+  1,
+  50,
+  new Date(startDate),
+  new Date(endDate)
+);
+```
+
+```tsx
+<DatePicker
+  selected={startDate}
+  onChange={handleDateChange}
+  startDate={startDate}
+  endDate={endDate}
+  selectsRange
+/>
+```
+
+**Now the updated mock data is passed dynamically to ResponsiveLineChart component, according to user's input date range.**
+
+## Updating the date legend at the bottom right
+
+Until now the date legend was rendering hard coded dates. But I changed it to dynamic data by passing the states as props to the Tabview component.
+
+![date_legend](image-4.png)
+
 ## Screenshots of working Application
+
+![Date-Picker](image-6.png)
+
+![Date-Range](image-5.png)
 
 ![Dropdown_Menu](image-1.png)
 
