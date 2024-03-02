@@ -1,19 +1,106 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { ResponsiveLineChart } from "../../components/dashboard/ResponsiveLineChart";
 import { TabView } from "../../components/dashboard/TabView";
 import { IChartDatum, TTab } from "../../interfaces";
-import {
-  averageOrderValueMockData,
-  averageOrderValueMockDataPrev,
-  totalOrdersMockData,
-  totalOrdersMockDataPrev,
-  onlineStoreSessionsMockData,
-  onlineStoreSessionsMockDataPrev,
-  grossSalesMockData,
-  grossSalesMockDataPrev,
-} from "../../data";
+
+import { generateMockData } from "../../mockData";
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export const Dashboard: React.FC = () => {
+  const [startDate, setStartDate] = useState<Date>(new Date("2023-11-04"));
+  const [endDate, setEndDate] = useState<Date>(new Date("2023-11-21"));
+
+  const handleDateChange = (dates: [Date, Date]) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+  };
+
+  const averageOrderValueMockData = generateMockData(
+    1,
+    50,
+    new Date(startDate),
+    new Date(endDate)
+  );
+
+  const averageOrderValueMockDataPrev = generateMockData(
+    3,
+    80,
+    new Date(
+      startDate?.getFullYear() - 1,
+      startDate?.getMonth(),
+      startDate?.getDate()
+    ),
+    new Date(
+      endDate?.getFullYear() - 1,
+      endDate?.getMonth(),
+      endDate?.getDate()
+    )
+  );
+
+  const totalOrdersMockData = generateMockData(
+    100,
+    500,
+    new Date(startDate),
+    new Date(endDate)
+  );
+  const totalOrdersMockDataPrev = generateMockData(
+    80,
+    600,
+    new Date(
+      startDate?.getFullYear() - 1,
+      startDate?.getMonth(),
+      startDate?.getDate()
+    ),
+    new Date(
+      endDate?.getFullYear() - 1,
+      endDate?.getMonth(),
+      endDate?.getDate()
+    )
+  );
+  const onlineStoreSessionsMockData = generateMockData(
+    100,
+    500,
+    new Date(startDate),
+    new Date(endDate)
+  );
+  const grossSalesMockDataPrev = generateMockData(
+    80,
+    600,
+    new Date(
+      startDate?.getFullYear() - 1,
+      startDate?.getMonth(),
+      startDate?.getDate()
+    ),
+    new Date(
+      endDate?.getFullYear() - 1,
+      endDate?.getMonth(),
+      endDate?.getDate()
+    )
+  );
+  const grossSalesMockData = generateMockData(
+    100,
+    500,
+    new Date(startDate),
+    new Date(endDate)
+  );
+  const onlineStoreSessionsMockDataPrev = generateMockData(
+    80,
+    600,
+    new Date(
+      startDate?.getFullYear() - 1,
+      startDate?.getMonth(),
+      startDate?.getDate()
+    ),
+    new Date(
+      endDate?.getFullYear() - 1,
+      endDate?.getMonth(),
+      endDate?.getDate()
+    )
+  );
+
   const useMemoizedChartData = (d: any) => {
     return useMemo(() => {
       return d?.data?.map((item: IChartDatum) => ({
@@ -129,8 +216,17 @@ export const Dashboard: React.FC = () => {
 
   return (
     <>
-      <div className="bg-slate-100 w-[100vw] h-[100vh] flex justify-center">
-        <TabView tabs={tabs} />
+      <div className="bg-slate-100 w-[100vw] h-[100vh] flex flex-col items-center">
+        <DatePicker
+          selected={startDate}
+          onChange={handleDateChange}
+          startDate={startDate}
+          endDate={endDate}
+          selectsRange
+        />
+        <div className="mt-8">
+          <TabView tabs={tabs} />
+        </div>
       </div>
     </>
   );
