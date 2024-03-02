@@ -216,16 +216,20 @@ export const Dashboard: React.FC = () => {
 
   return (
     <>
-      <div className="bg-slate-100 w-[100vw] h-[100vh] flex flex-col items-center">
-        <DatePicker
-          selected={startDate}
-          onChange={handleDateChange}
-          startDate={startDate}
-          endDate={endDate}
-          selectsRange
-        />
-        <div className="mt-8">
-          <TabView tabs={tabs} startDate={startDate} endDate={endDate} />
+      <div className="bg-slate-100 w-[100vw] h-[100vh] flex flex-col gap-6">
+        <div className="flex flex-col mt-[180px] ml-[380px] gap-4">
+          <div className="ml-[300px]">
+            <DatePicker
+              selected={startDate}
+              onChange={handleDateChange}
+              startDate={startDate}
+              endDate={endDate}
+              selectsRange
+            />
+          </div>
+          <div className="">
+            <TabView tabs={tabs} startDate={startDate} endDate={endDate} />
+          </div>
         </div>
       </div>
     </>

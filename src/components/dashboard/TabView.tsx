@@ -29,7 +29,7 @@ export const TabView = ({ tabs, startDate, endDate }: TTabViewProps) => {
   };
 
   return (
-    <div className="flex flex-col items-start bg-white absolute w-[793px] rounded-xl p-2.5 gap-2.5 shadow-md mt-48">
+    <div className="flex flex-col items-start bg-white absolute w-[793px] rounded-xl p-2.5 gap-2.5 shadow-md">
       <div className="flex items-center p-0 gap-1 w-[773px] h-[60px] ">
         {tabs?.map((tab: TTab, index: number) => (
           <TabItem
