@@ -5,11 +5,24 @@ import { TTab } from "../../interfaces";
 
 type TTabViewProps = {
   tabs: TTab[];
+  startDate: Date;
+  endDate: Date;
 };
 
-export const TabView = ({ tabs }: TTabViewProps) => {
+export const TabView = ({ tabs, startDate, endDate }: TTabViewProps) => {
   const [activeTab, setActiveTab] = useState(0);
   const [collapsed, setCollapsed] = useState(false);
+
+  const previousYearStartDate = new Date(
+    startDate?.getFullYear() - 1,
+    startDate?.getMonth(),
+    startDate?.getDate()
+  );
+  const previousYearEndDate = new Date(
+    endDate?.getFullYear() - 1,
+    endDate?.getMonth(),
+    endDate?.getDate()
+  );
 
   const toggleTab = (index: number) => {
     setCollapsed((prevState) => !prevState);
@@ -90,7 +103,15 @@ export const TabView = ({ tabs }: TTabViewProps) => {
             &nbsp;&nbsp;
           </span>
           <div className="w-[149px] h-[12px] font-normal text-[10px] flex items-center text-[#70707A]">
-            Jan 1, 2023 - Jan 15, 2023
+            {`${startDate?.toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            })} - ${endDate?.toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            })}`}
           </div>
         </div>
         <div className="rounded-sm w-[189px] h-[22px] bg-[#F6F6F7] flex items-center py-[5px] px-[10px] gap-2.5">
@@ -106,7 +127,15 @@ export const TabView = ({ tabs }: TTabViewProps) => {
             &nbsp;&nbsp;
           </span>
           <div className="w-[149px] h-[12px] font-normal text-[10px] flex items-center text-[#70707A]">
-            Jan 1, 2022 - Jan 15, 2022
+            {`${previousYearStartDate?.toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            })} - ${previousYearEndDate?.toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            })}`}
           </div>
         </div>
       </div>

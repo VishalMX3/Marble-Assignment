@@ -225,7 +225,7 @@ export const Dashboard: React.FC = () => {
           selectsRange
         />
         <div className="mt-8">
-          <TabView tabs={tabs} />
+          <TabView tabs={tabs} startDate={startDate} endDate={endDate} />
         </div>
       </div>
     </>
